@@ -1,1 +1,1 @@
-g++ reconnect-wifi-daemon.c -o reconnect-wifi-daemon
+g++ reconnect-wifi-daemon.c -o reconnect-wifi-daemon -lconfuse

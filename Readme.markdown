@@ -10,4 +10,8 @@ Reconnect-wifi-daemon is a simple, C-based daemon which polls a wireless adapter
 
 How do I set it up?
 -------------------
-Pull the latest version to somewhere convenient. Open reconnect-wifi-daemon.c in your favorite editor and replace "WesleyPhone" with the name of the wifi access point that you want to automatically reconnect to. Run ./build and add the output "reconnect-wifi-daemon" to your prefered startup-script launcher. This daemon **must** run as *root* user. This can also be run from the command line by typing `sudo ./reconnect-wifi-daemon`
+Pull the latest version to somewhere convenient. Create the file `/etc/reconnect-wifi-daemon/reconnect-wifi-daemon.conf` and add the line 
+
+    SSID="text"
+
+where `text` is the SSID of the wifi access point that you want to automatically reconnect to. Run `./build` and add the output "reconnect-wifi-daemon" to your prefered startup-script launcher. This daemon **must** run as *root* user. This can also be run from the command line by typing `sudo ./reconnect-wifi-daemon`
