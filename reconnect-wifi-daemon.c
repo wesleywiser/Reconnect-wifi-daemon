@@ -39,7 +39,7 @@ int main()
   char buffer [100];
 
   //check for overflow
-  if(sprintf(buffer, "iwconfig wlan0 | grep %s -q", ssid) < 0)
+  if(sprintf(buffer, "sudo iwlist wlan0 scan | grep %s -q", ssid) < 0)
   {
     syslog(LOG_ERR, "Too many characters in ssid");
     return 1;
