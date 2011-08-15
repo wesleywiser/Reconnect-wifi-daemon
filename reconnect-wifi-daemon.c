@@ -35,23 +35,16 @@ int main()
 
   char *ssid = strdup("NETGEAR");
   getSSID(ssid);
+  int ssidLen = strlen(ssid);
 
-  char buffer [100];
+  char scanForNetworks [strlen("sudo iwlist wlan0 scan | grep -q ") + ssidLen];
+  sprintf(scanForNetworks, "sudo iwlist wlan0 scan | grep -q %s", ssid);
 
-  //check for overflow
-  if(sprintf(buffer, "sudo iwlist wlan0 scan | grep %s -q", ssid) < 0)
-  {
-    syslog(LOG_ERR, "Too many characters in ssid");
-    return 1;
-  }
-  //otherwise, log what the SSID is
-  else
-  {
-    char message [100];
-    sprintf(message, "SSID: %s", ssid);
-    
-    syslog(LOG_INFO, message);
-  }
+  //log what the SSID is
+  syslog(LOG_INFO, "SSID: %s", ssid);
+
+  free(ssid);
+  ssid = NULL;
 
   while(1)
   {
@@ -61,7 +54,7 @@ int main()
     if(retCode == 0)
     {
       //check if the network is available
-      retCode = system(buffer);
+      retCode = system(scanForNetworks);
 
       //network available
       if(retCode == 0)
