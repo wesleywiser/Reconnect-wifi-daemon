@@ -1,6 +1,5 @@
 #include <unistd.h>
 #include <err.h>
-#include <stdio.h>
 #include <syslog.h>
 #include <stdlib.h>
 #include <confuse.h>
